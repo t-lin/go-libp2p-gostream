@@ -26,7 +26,7 @@ type listener struct {
 func (l *listener) Accept() (net.Conn, error) {
 	select {
 	case s := <-l.streamCh:
-		return newConn(s), nil
+		return NewConn(s), nil
 	case <-l.ctx.Done():
 		return nil, l.ctx.Err()
 	}

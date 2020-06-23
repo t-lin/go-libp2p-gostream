@@ -18,8 +18,8 @@ type conn struct {
 	s network.Stream
 }
 
-// newConn creates a conn given a libp2p stream
-func newConn(s network.Stream) net.Conn {
+// NewConn creates a conn given a libp2p stream
+func NewConn(s network.Stream) net.Conn {
 	return &conn{s}
 }
 
@@ -84,5 +84,5 @@ func Dial(ctx context.Context, h host.Host, pid peer.ID, tag protocol.ID) (net.C
 	if err != nil {
 		return nil, err
 	}
-	return newConn(s), nil
+	return NewConn(s), nil
 }
